@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ChickenScript : MonoBehaviour
 {
@@ -26,9 +28,9 @@ public class ChickenScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isBirdAlive)
+        if (isBirdAlive && Time.timeScale == 1)
         {
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+            if (InputSystem.actions.FindAction("Jump").IsPressed() || InputSystem.actions.FindAction("Click").IsPressed())
             {
                 myRigidBody.linearVelocity = Vector2.up * flapStrength;
                 chickenPluck.Play();
@@ -46,9 +48,9 @@ public class ChickenScript : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (InputSystem.actions.FindAction("Cancel").IsPressed())
         {
-            Time.timeScale = 0;
+            logic.pauseGame();
             logic.exitGameScreen.SetActive(true);
         }
     }

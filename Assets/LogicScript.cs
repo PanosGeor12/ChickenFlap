@@ -28,6 +28,11 @@ public class LogicScript : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void pauseGame()
+    {
+        Time.timeScale = 0;
+    }
+
     public void gameOver()
     {
         gameOverScreen.SetActive(true);
