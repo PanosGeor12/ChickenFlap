@@ -6,8 +6,9 @@ public class LogicScript : MonoBehaviour
 {
     public int playerScore;
     public Text scoreText;
-    public GameObject gameOverScreen;
 
+    public GameObject gameOverScreen;
+    public GameObject exitGameScreen;
     public GameObject startGameScreen;
 
     [ContextMenu("Increase Score")]
@@ -30,5 +31,17 @@ public class LogicScript : MonoBehaviour
     public void gameOver()
     {
         gameOverScreen.SetActive(true);
+    }
+
+    public void exitGame()
+    {
+        Application.Quit();
+        //UnityEditor.EditorApplication.isPlaying = false;
+    }
+
+    public void cloceModal()
+    {
+        Time.timeScale = 1;
+        exitGameScreen.SetActive(false);
     }
 }

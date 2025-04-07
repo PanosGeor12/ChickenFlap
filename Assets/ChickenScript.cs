@@ -45,6 +45,12 @@ public class ChickenScript : MonoBehaviour
                 currentSprite.sprite = initialSprite;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Time.timeScale = 0;
+            logic.exitGameScreen.SetActive(true);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
